@@ -83,9 +83,9 @@ class Person {
 class Car {
   constructor(model,milesPerGallon){
 
-    this.model=model,
-    this.milesPerGallon=milesPerGallon,
-    this.tank=0,
+    this.model=model;
+    this.milesPerGallon=milesPerGallon;
+    this.tank=0;
     this.odometer=0;
   }
 
@@ -96,8 +96,18 @@ class Car {
 
   drive(distance){
 
+    let fuel=distance/this.milesPerGallon;
+    let maxDis=this.tank*this.milesPerGallon
+    if(this.tank>=fuel){
+      this.odometer = this.odometer+distance;
+      this.tank -= fuel;
+    }
+    else{
+      this.odometer=maxDis;
+      this.tank=0;
+      return (`I ran out of fuel at ${this.odometer}miles!`)
+    }
   }
-
 
 }
 
@@ -116,13 +126,13 @@ class Car {
 class Lambdasian {
 
   constructor(object){
-    this.name=object.name,
-    this.age=object.age,
+    this.name=object.name;
+    this.age=object.age;
     this.location=object.location;
   }
 
   speak(){
-    return (`Hello my name is ${this.name}, I am from ${this.location}`)
+    return (`Hello my name is ${this.name}, I am from ${this.location}`);
   }
 
 }
@@ -143,9 +153,9 @@ class Lambdasian {
 */
 class Instructor extends Lambdasian {
   constructor(object){
-    super(object),
-    this.specialty=object.specialty,
-    this.favLanguage=object.favLanguage,
+    super(object);
+    this.specialty=object.specialty;
+    this.favLanguage=object.favLanguage;
     this.catchPhrase=object.catchPhrase;
   };
 
@@ -155,10 +165,8 @@ class Instructor extends Lambdasian {
   };
 
   grade(student,subject){
-    this.student=student,
-    this.subject=subject;
-    return (`${this.student} receives a perfect score on ${this.subject}`);
-  }
+    return (`${student} receives a perfect score on ${subject}`);
+  };
 }
 
 /*
@@ -178,9 +186,9 @@ class Instructor extends Lambdasian {
 */
 class Student extends Lambdasian{
   constructor(object){
-    super(object),
-    this.previousBackground=object.previousBackground,
-    this.className=object.className,
+    super(object);
+    this.previousBackground=object.previousBackground;
+    this.className=object.className;
     this.favSubjects=object.favSubjects;
   };
 
@@ -213,8 +221,23 @@ class Student extends Lambdasian{
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
+class ProjectManager extends Instructor {
+  constructor(object){
+    super(object),
+    this.gradClassName=object.gradClassName,
+    this.favInstructor=object.favInstructor;
+  };
+  
+  standUp(channel){
+    this.channel=channel;
+    return (`${this.name} announces to ${this.channel}, @channel standy times!`);
+  };
 
+  debugsCode(name,subject){
+    this.name=name;
+    this.subject=subject;
+    return (`${this.name} debugs ${Student.name}'s code on ${this.subject}`);
+  };
 }
 
 /*
