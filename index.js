@@ -180,7 +180,7 @@ class Student extends Lambdasian{
   constructor(object){
     super(object),
     this.previousBackground=object.previousBackground,
-    this.classname=object.className,
+    this.className=object.className,
     this.favSubjects=object.favSubjects;
   };
 
@@ -188,10 +188,12 @@ class Student extends Lambdasian{
     return (`${this.favSubjects}`);
   };
 
-  PRAssaignment(subject){
+  PRAssignment(subject){
     this.subject=subject;
-    return (`${this.name}has begun sprint challenge on ${this.subject}`);
+    return (`${this.name} has submitted a PR for ${this.subject}`);
   }
+
+
 
 }
 
