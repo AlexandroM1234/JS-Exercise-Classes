@@ -165,7 +165,9 @@ class Instructor extends Lambdasian {
   };
 
   grade(student,subject){
-    return (`${student} receives a perfect score on ${subject}`);
+    this.subject=student
+    this.subject=subject
+    console.log (`${student} receives a perfect score on ${subject}`);
   };
 }
 
@@ -234,9 +236,7 @@ class ProjectManager extends Instructor {
   };
 
   debugsCode(name,subject){
-    this.name=name;
-    this.subject=subject;
-    return (`${this.name} debugs ${Student.name}'s code on ${this.subject}`);
+    console.log(`${name} debugs ${Student.name}'s code on ${subject}`);
   };
 }
 
